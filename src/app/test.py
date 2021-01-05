@@ -1,4 +1,4 @@
-from config import data_dir
+from config import monk1_test 
+import pandas as pd 
 
-def model():
-    return data_dir 
+
