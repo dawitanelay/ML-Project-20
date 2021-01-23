@@ -1,0 +1,199 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "\"\"\"Importing the libraries\"\"\"\n",
+    "\n",
+    "import numpy as np\n",
+    "import pandas as pd \n",
+    "from sklearn.preprocessing import minmax_scale\n",
+    "from sklearn.multioutput import RegressorChain\n",
+    "from sklearn.tree import ExtraTreeRegressor\n",
+    "from sklearn.multioutput import MultiOutputRegressor\n",
+    "from sklearn.preprocessing import StandardScaler\n",
+    "from sklearn.model_selection import train_test_split\n",
+    "from sklearn.model_selection import GridSearchCV\n",
+    "from sklearn.pipeline import Pipeline\n",
+    "from sklearn.svm import SVR\n",
+    "from sklearn.metrics import r2_score\n",
+    "from sklearn.model_selection import learning_curve\n",
+    "import matplotlib.pyplot as plt\n",
+    "import seaborn as sns \n",
+    "\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def mean_euclidean_error(y_true, y_pred):\n",
+    "    \"\"\"\n",
+    "    mean euclidean error MEE\n",
+    "    \"\"\"\n",
+    "\n",
+    "    error = 0\n",
+    "    if len(y_true) == len(y_pred):\n",
+    "        for i in range(len(y_true)):\n",
+    "            error = error + np.sqrt(np.square(y_pred[i][0]\n",
+    "                                    - y_true[i][0])\n",
+    "                                    + np.square(y_pred[i][1]\n",
+    "                                    - y_true[i][1]))\n",
+    "        return error / len(y_true)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "\"\"\"Importing the dataset\"\"\"\n",
+    "\n",
+    "train_df = pd.read_csv('../data/ML-CUP20-TR .csv')\n",
+    "test_df = pd.read_csv('../data/ML-CUP20-TS.csv')\n",
+    "test_cup = pd.read_csv('../data/ML-CUP20-TS.csv')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "\"\"\"Splitting the dataset into the Training set and Test set\"\"\"\n",
+    "\n",
+    "train_x = train_df.iloc[:, :-2].to_numpy()\n",
+    "train_y = train_df.iloc[:, [10, 11]].to_numpy()\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "\"\"\"Splitting the dataset into the Training set and Test set\"\"\"\n",
+    "\n",
+    "(x_train, x_test, y_train, y_test) = train_test_split(train_x, train_y,\n",
+    "        test_size=0.4, random_state=30)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "\"\"\" Fitting ExtraTreeRegressor to the Training set with the best parameters obtained form gridsearch\"\"\"\n",
+    "\n",
+    "et_regressor = Pipeline(steps=[('scale', StandardScaler()), ('estimator'\n",
+    "                        ,\n",
+    "                        RegressorChain(ExtraTreeRegressor(ccp_alpha=0.0,\n",
+    "                                                                  criterion='mse',\n",
+    "                                                                  max_depth=6,\n",
+    "                                                                  max_features='auto',\n",
+    "                                                                  max_leaf_nodes=20,\n",
+    "                                                                  min_impurity_decrease=0.0,\n",
+    "                                                                  min_impurity_split=None,\n",
+    "                                                                  min_samples_leaf=20,\n",
+    "                                                                  min_samples_split=10,\n",
+    "                                                                  min_weight_fraction_leaf=0.0,\n",
+    "                                                                  random_state=0,\n",
+    "                                                                  splitter='random'),\n",
+    "                        order=[0, 1]))]).fit(x_train, y_train)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "\"\"\" Predicting the Test set results \"\"\"\n",
+    "\n",
+    "y_pred = et_regressor.predict(x_test)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Model r2_score :0.835\n",
+      "Model MEE :5.205\n"
+     ]
+    }
+   ],
+   "source": [
+    "\"\"\"  summarize performance \"\"\"\n",
+    "\n",
+    "print(f\"Model r2_score :{round(r2_score(y_test, y_pred),3)}\" )\n",
+    "print(f\"Model MEE :{round(mean_euclidean_error(y_test, y_pred),3)}\" )\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "NameError",
+     "evalue": "name 'sns' is not defined",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-17-f8679abff6af>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[1;32m      1\u001b[0m \u001b[0;34m\"\"\"Visualising model results \"\"\"\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      2\u001b[0m \u001b[0;31m# we expect to see the result have zero mean distributed evenly around the x-axis\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 3\u001b[0;31m \u001b[0msns\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mresidplot\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0my_pred\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;36m0\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0my_test\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;36m0\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      4\u001b[0m \u001b[0msns\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mresidplot\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0my_pred\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;36m1\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0my_test\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;36m1\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mset_ylabel\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'Residuals'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;31mNameError\u001b[0m: name 'sns' is not defined"
+     ]
+    }
+   ],
+   "source": [
+    "\"\"\"Visualising model results \"\"\"\n",
+    "# we expect to see the result have zero mean distributed evenly around the x-axis \n",
+    "sns.residplot(y_pred[:, 0], y_test[:, 0])\n",
+    "sns.residplot(y_pred[:, 1], y_test[:, 1]).set_ylabel('Residuals')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.6"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
