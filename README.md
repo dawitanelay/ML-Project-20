@@ -7,4 +7,3 @@ Scikit-learn [2] framework. We perform model selection and validate via a combin
 phases and cross-validation, also testing on an internal test set extracted via hold-out.
 
 
-Chick out the full report on notebook Dir
