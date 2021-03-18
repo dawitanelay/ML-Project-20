@@ -1,5 +1,5 @@
 # University of Pisa Machine Learning Project 2020
-***
+
 ### Abstract
 
 Our goal was to build and compare different models from different software tools. We compare a
