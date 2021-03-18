@@ -9,7 +9,9 @@ phases and cross-validation, also testing on an internal test set extracted via 
 
 ### Introduction
 
-The aims of project B of the Machine Learning (ML) course held by Professor Alessio Micheli at [Department of Computer Science](https://di.unipi.it/) of [University of Pisa](https://www.unipi.it/) is to bulid a ML model simulator to solve a multi-target regression task on CUP Dataset provided by the professor and Make a comparison among models .After exploring diffrent models 
+The aims of project B of the Machine Learning (ML) course held by Professor Alessio Micheli at [Department of Computer Science](https://di.unipi.it/) of [University of Pisa](https://www.unipi.it/) is to bulid a ML model simulator to solve a multi-target regression task on CUP Dataset provided by the professor and Make a comparison among models .
 
 
+
+1. All the detalis about the project can be found on the full report [here](https://github.com/dawitanelay/ML-Project-20/blob/main/notebook/cupResult/)
 
