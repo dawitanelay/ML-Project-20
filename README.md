@@ -9,7 +9,7 @@ phases and cross-validation, also testing on an internal test set extracted via 
 
 ### Introduction
 
-The aims of project A of the Machine Learning (ML) course held by Professor Alessio Micheli at [Department of Computer Science](https://di.unipi.it/) of[University of Pisa](https://www.unipi.it/)
+The aims of project A of the Machine Learning (ML) course held by Professor Alessio Micheli at [Department of Computer Science](https://di.unipi.it/) of [University of Pisa](https://www.unipi.it/)
 
 
 
