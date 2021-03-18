@@ -13,5 +13,5 @@ The aims of project B of the Machine Learning (ML) course held by Professor Ales
 
 
 
-1. All the detalis about the project can be found on the full report [here](https://github.com/dawitanelay/ML-Project-20/blob/main/notebook/cupResult/)
+1 All the detalis about the project can be found on the full report [here](https://github.com/dawitanelay/ML-Project-20/blob/main/notebook/cupResult/smile_report.pdf)
 
