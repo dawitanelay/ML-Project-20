@@ -29,9 +29,14 @@ distance from the record fed to it.
 
 ### References
 [1] https://keras.io/
+
 [2] https://scikit-learn.org/stable/
+
 [3] https://pandas.pydata.org/
+
 [4] https://numpy.org/
+
 [5] https://matplotlib.org/
+
 [6] https://seaborn.pydata.org/
 
