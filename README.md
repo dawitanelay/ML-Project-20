@@ -41,5 +41,6 @@ distance from the record fed to it.
 [6] https://seaborn.pydata.org/
 
 ### Authors
-- Dawit Mezemir Anelay  mailto:d.anelay1@studenti.unipi.it
+- Dawit Mezemir Anelay  :d.anelay1@studenti.unipi.it
+-  Marco Petix          :m.petix@studenti.unipi.it
 
