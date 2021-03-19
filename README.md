@@ -28,7 +28,7 @@ distance from the record fed to it.
 - All the detalis about the project can be found on the full report [here](https://github.com/dawitanelay/ML-Project-20/blob/main/notebook/cupResult/smile_report.pdf)
 
 ### References
-[1]: HTTPS :// KERAS . IO /
+[1]: https://keras.io/
 [2]: HTTPS :// SCIKIT - LEARN . ORG / STABLE /
 [3]: HTTPS :// PANDAS . PYDATA . ORG /
 [4]: HTTPS :// NUMPY . ORG /
