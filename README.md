@@ -11,10 +11,16 @@ phases and cross-validation, also testing on an internal test set extracted via 
 
 The aims of project B of the Machine Learning (ML) course held by Professor Alessio Micheli at [Department of Computer Science](https://di.unipi.it/) of [University of Pisa](https://www.unipi.it/) is to bulid a ML model simulator to solve a multi-target regression task on CUP Dataset provided by the professor and Make a comparison among models .
 The project contains two different datasets. The [Monk](https://archive.ics.uci.edu/ml/datasets/MONK's+Problems) and Cup dataset. The Monk dataset is the bench mark dataset used to compare different models.
-### modele in nutshell
-- Neural Network from Keras
-- Support Vector Machine
-- K-nn regressors 
+we  study the influence of the various hyper-parameters upon the implementation of a
+neural network model. This is achieved through intensive use of screening phases which also provide
+the added benefit of alleviating the computational burden of the many grid-searches.
+The result of said effort, in the form of a neural network implementing a mini-batch Stochastic
+Gradient Descent, is then put to the test through a comparison with two main other well known
+regression models. The former, a Regressor-chain SVR, presents a Radial Basis Function kernel (rbf)
+with a degree of polynomial kernel function and regularization parameters while the latter, a
+K-Neighbors Regressor, weights the influence of each neighbor with respect to their euclidean
+distance from the record fed to it.
+
 
 
 
