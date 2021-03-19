@@ -29,9 +29,9 @@ distance from the record fed to it.
 
 ### References
 [1] https://keras.io/
-[2]: HTTPS :// SCIKIT - LEARN . ORG / STABLE /
-[3]: HTTPS :// PANDAS . PYDATA . ORG /
-[4]: HTTPS :// NUMPY . ORG /
-[5]: HTTPS :// MATPLOTLIB . ORG /
-[6]: HTTPS :// SEABORN . PYDATA . ORG /
+[2] https://scikit-learn.org/stable/
+[3] https://pandas.pydata.org/
+[4] https://numpy.org/
+[5] https://matplotlib.org/
+[6] https://seaborn.pydata.org/
 
