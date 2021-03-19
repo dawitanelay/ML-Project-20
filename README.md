@@ -11,6 +11,10 @@ phases and cross-validation, also testing on an internal test set extracted via 
 
 The aims of project B of the Machine Learning (ML) course held by Professor Alessio Micheli at [Department of Computer Science](https://di.unipi.it/) of [University of Pisa](https://www.unipi.it/) is to bulid a ML model simulator to solve a multi-target regression task on CUP Dataset provided by the professor and Make a comparison among models .
 The project contains two different datasets. The [Monk](https://archive.ics.uci.edu/ml/datasets/MONK's+Problems) and Cup dataset. The Monk dataset is the bench mark dataset used to compare different models.
+### modele in nutshell
+- Neural Network from Keras
+- Support Vector Machine
+- K-nn regressors 
 
 
 
